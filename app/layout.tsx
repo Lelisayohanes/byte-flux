@@ -16,6 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "ByteFlux - Learn Programming & Computer Science",
   description: "Comprehensive learning platform for programming, computer science, and software development. Master coding skills with structured courses and hands-on projects.",
+  authors: [{ name: "Lelisayohanes" }],
 };
 
 export default function RootLayout({
