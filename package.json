@@ -2,6 +2,7 @@
   "name": "my-blog",
   "version": "0.1.0",
   "private": true,
+  "author": "Lelisayohanes",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",

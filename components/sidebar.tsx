@@ -103,15 +103,22 @@ const categories = [
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
+  currentCategory?: {
+    title: string;
+    icon: string;
+    topics: string[];
+  };
+  showSubCategories?: boolean;
+  onShowMainSidebar?: () => void;
 }
 
-export default function Sidebar({ isOpen, onClose }: SidebarProps) {
+export default function Sidebar({ isOpen, onClose, currentCategory, showSubCategories = false, onShowMainSidebar }: SidebarProps) {
   console.log('Sidebar rendered with isOpen:', isOpen);
   
   return (
     <>
-      {/* Overlay */}
-      {isOpen && (
+      {/* Overlay - only show for main sidebar */}
+      {isOpen && !showSubCategories && (
         <div 
           className="fixed inset-0 bg-gray-900 bg-opacity-10 z-40"
           onClick={onClose}
@@ -119,39 +126,128 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
       )}
       
       {/* Sidebar */}
-      <div className={`fixed top-0 left-0 h-full w-64 bg-white dark:bg-gray-800 shadow-xl z-50 transform transition-transform duration-300 ease-in-out ${
-        isOpen ? 'translate-x-0' : '-translate-x-full'
+      <div className={`fixed top-0 left-0 h-full w-80 bg-white dark:bg-gray-800 shadow-xl z-50 transform transition-transform duration-300 ease-in-out ${
+        isOpen || showSubCategories ? 'translate-x-0' : '-translate-x-full'
       }`}>
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b dark:border-gray-700">
-          <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Categories</h2>
-          <Button variant="ghost" size="sm" onClick={onClose} className="p-2">
-            <X className="w-4 h-4" />
-          </Button>
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
+            {currentCategory ? currentCategory.title : "Categories"}
+          </h2>
+          {/* Only show close button for main sidebar, not sub-categories */}
+          {!showSubCategories && (
+            <Button variant="ghost" size="sm" onClick={onClose} className="p-2">
+              <X className="w-4 h-4" />
+            </Button>
+          )}
         </div>
         
-        {/* Categories List */}
+        {/* Content */}
         <div className="overflow-y-auto h-full pb-20">
-          <div className="p-3 space-y-1">
-            {categories.map((category) => {
-              const IconComponent = category.icon;
-              return (
+          {currentCategory ? (
+            // Show category topics
+            <div className="p-6">
+              <div className="flex items-center space-x-3 mb-6">
+                <div className="text-3xl">{currentCategory.icon}</div>
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                    Topics Covered
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    {currentCategory.topics.length} topics
+                  </p>
+                </div>
+              </div>
+              
+              <div className="space-y-3">
+                {currentCategory.topics.map((topic, index) => {
+                  // Check if this is a programming language topic
+                  const isProgrammingLanguage = currentCategory.title === "Programming & Development" && 
+                    (topic.includes("Python") || topic.includes("Java") || topic.includes("C++") || topic.includes("JavaScript"));
+                  
+                  const topicPath = isProgrammingLanguage 
+                    ? `/categories/programming/${topic.toLowerCase().replace(/\s+/g, '').replace('c++', 'cpp')}`
+                    : null;
+
+                  if (topicPath) {
+                    return (
+                      <Link key={index} href={topicPath} className="block">
+                        <div className="flex items-start space-x-3 p-3 rounded-lg bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors cursor-pointer">
+                        <div className="w-6 h-6 bg-gray-600 dark:bg-gray-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <span className="text-white text-xs font-bold">{index + 1}</span>
+                          </div>
+                          <span className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                            {topic}
+                          </span>
+                        </div>
+                      </Link>
+                    );
+                  }
+
+                  return (
+                    <div key={index} className="flex items-start space-x-3 p-3 rounded-lg bg-gray-50 dark:bg-gray-700">
+                      <div className="w-6 h-6 bg-gray-600 dark:bg-gray-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <span className="text-white text-xs font-bold">{index + 1}</span>
+                      </div>
+                      <span className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                        {topic}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+              
+              <div className="mt-8 pt-6 border-t dark:border-gray-700">
+                {onShowMainSidebar ? (
+                  <button
+                    onClick={onShowMainSidebar}
+                    className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 group w-full text-left"
+                  >
+                    <div className="w-8 h-8 bg-gray-100 dark:bg-gray-600 rounded-md flex items-center justify-center group-hover:bg-gray-200 dark:group-hover:bg-gray-500 transition-colors flex-shrink-0">
+                      <BookOpen className="w-4 h-4 text-gray-600 dark:text-gray-300" />
+                    </div>
+                    <span className="font-medium text-gray-900 dark:text-white group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors text-sm">
+                      View All Categories
+                    </span>
+                  </button>
+                ) : (
+                  <Link
+                    href="/"
+                    onClick={onClose}
+                    className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 group"
+                  >
+                    <div className="w-8 h-8 bg-gray-100 dark:bg-gray-600 rounded-md flex items-center justify-center group-hover:bg-gray-200 dark:group-hover:bg-gray-500 transition-colors flex-shrink-0">
+                      <BookOpen className="w-4 h-4 text-gray-600 dark:text-gray-300" />
+                    </div>
+                    <span className="font-medium text-gray-900 dark:text-white group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors text-sm">
+                      View All Categories
+                    </span>
+                  </Link>
+                )}
+              </div>
+            </div>
+          ) : (
+            // Show all categories
+            <div className="p-3 space-y-1">
+              {categories.map((category) => {
+                const IconComponent = category.icon;
+                return (
                 <Link
                   key={category.id}
                   href={`/categories/${category.id}`}
-                  onClick={onClose}
                   className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 group"
                 >
-                  <div className="w-8 h-8 bg-gray-100 dark:bg-gray-600 rounded-md flex items-center justify-center group-hover:bg-gray-200 dark:group-hover:bg-gray-500 transition-colors flex-shrink-0">
-                    <IconComponent className="w-4 h-4 text-gray-600 dark:text-gray-300" />
-                  </div>
-                  <span className="font-medium text-gray-900 dark:text-white group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors text-sm">
-                    {category.title}
-                  </span>
-                </Link>
-              );
-            })}
-          </div>
+                    <div className="w-8 h-8 bg-gray-100 dark:bg-gray-600 rounded-md flex items-center justify-center group-hover:bg-gray-200 dark:group-hover:bg-gray-500 transition-colors flex-shrink-0">
+                      <IconComponent className="w-4 h-4 text-gray-600 dark:text-gray-300" />
+                    </div>
+                    <span className="font-medium text-gray-900 dark:text-white group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors text-sm">
+                      {category.title}
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+          )}
         </div>
       </div>
     </>

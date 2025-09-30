@@ -2,86 +2,86 @@
 
 @layer base {
   :root {
-    /* Base colors - Light theme */
+    /* Base colors - Light theme - Neutral grayscale */
     --background: 0 0% 100%;                    /* Pure white */
-    --foreground: 220 13% 9%;                  /* Near black - excellent readability */
+    --foreground: 0 0% 9%;                      /* Near black - excellent readability */
     --card: 0 0% 100%;                         /* White cards */
-    --card-foreground: 220 13% 9%;             /* Dark text on cards */
+    --card-foreground: 0 0% 9%;               /* Dark text on cards */
     --popover: 0 0% 100%;                      /* White popovers */
-    --popover-foreground: 220 13% 9%;          /* Dark text on popovers */
+    --popover-foreground: 0 0% 9%;            /* Dark text on popovers */
     
-    /* Primary colors - Single professional blue */
-    --primary: 220 13% 20%;                    /* Dark gray-blue for CTAs and links */
+    /* Primary colors - Neutral grays */
+    --primary: 0 0% 20%;                       /* Dark gray for CTAs and links */
     --primary-foreground: 0 0% 100%;           /* White text on primary */
     
     /* Secondary colors - Neutral grays */
-    --secondary: 220 13% 95%;                  /* Very light gray */
-    --secondary-foreground: 220 13% 20%;       /* Dark text on secondary */
+    --secondary: 0 0% 95%;                     /* Very light gray */
+    --secondary-foreground: 0 0% 20%;          /* Dark text on secondary */
     
     /* Muted colors - For subtle elements */
-    --muted: 220 13% 95%;                      /* Light gray backgrounds */
-    --muted-foreground: 220 13% 45%;           /* Medium gray text */
+    --muted: 0 0% 95%;                         /* Light gray backgrounds */
+    --muted-foreground: 0 0% 45%;             /* Medium gray text */
     
     /* Accent colors - Same as secondary for consistency */
-    --accent: 220 13% 95%;                     /* Light accent background */
-    --accent-foreground: 220 13% 20%;          /* Dark accent text */
+    --accent: 0 0% 95%;                        /* Light accent background */
+    --accent-foreground: 0 0% 20%;             /* Dark accent text */
     
-    /* Minimal semantic colors - Only success for positive feedback */
-    --success: 220 13% 30%;                    /* Dark gray for success states */
+    /* Minimal semantic colors - All neutral grays */
+    --success: 0 0% 30%;                       /* Dark gray for success states */
     --success-foreground: 0 0% 100%;           /* White text on success */
-    --warning: 220 13% 30%;                    /* Same as success for consistency */
+    --warning: 0 0% 30%;                       /* Same as success for consistency */
     --warning-foreground: 0 0% 100%;           /* White text on warning */
-    --destructive: 220 13% 30%;                /* Same as success for consistency */
+    --destructive: 0 0% 30%;                   /* Same as success for consistency */
     --destructive-foreground: 0 0% 100%;       /* White text on destructive */
-    --info: 220 13% 20%;                       /* Same as primary for consistency */
+    --info: 0 0% 20%;                          /* Same as primary for consistency */
     --info-foreground: 0 0% 100%;              /* White text on info */
     
     /* UI elements */
-    --border: 220 13% 85%;                     /* Light gray borders */
-    --input: 220 13% 85%;                      /* Light gray inputs */
-    --ring: 220 13% 20%;                       /* Dark gray focus rings */
+    --border: 0 0% 85%;                        /* Light gray borders */
+    --input: 0 0% 85%;                         /* Light gray inputs */
+    --ring: 0 0% 20%;                          /* Dark gray focus rings */
     --radius: 0.5rem;                          /* Consistent border radius */
   }
 
   .dark {
-    /* Base colors - Dark theme */
-    --background: 220 13% 9%;                  /* Near black background */
+    /* Base colors - Dark theme - Neutral grayscale */
+    --background: 0 0% 9%;                     /* Near black background */
     --foreground: 0 0% 100%;                   /* White text */
-    --card: 220 13% 9%;                        /* Dark cards */
+    --card: 0 0% 9%;                           /* Dark cards */
     --card-foreground: 0 0% 100%;              /* White text on cards */
-    --popover: 220 13% 9%;                     /* Dark popovers */
+    --popover: 0 0% 9%;                        /* Dark popovers */
     --popover-foreground: 0 0% 100%;           /* White text on popovers */
     
     /* Primary colors - Light gray for dark theme */
-    --primary: 220 13% 80%;                    /* Light gray for dark backgrounds */
-    --primary-foreground: 220 13% 9%;          /* Dark text on primary */
+    --primary: 0 0% 80%;                       /* Light gray for dark backgrounds */
+    --primary-foreground: 0 0% 9%;             /* Dark text on primary */
     
     /* Secondary colors - Darker grays */
-    --secondary: 220 13% 15%;                  /* Dark gray */
-    --secondary-foreground: 220 13% 80%;       /* Light text on secondary */
+    --secondary: 0 0% 15%;                     /* Dark gray */
+    --secondary-foreground: 0 0% 80%;          /* Light text on secondary */
     
     /* Muted colors - For subtle elements */
-    --muted: 220 13% 15%;                      /* Dark gray backgrounds */
-    --muted-foreground: 220 13% 65%;           /* Light gray text */
+    --muted: 0 0% 15%;                         /* Dark gray backgrounds */
+    --muted-foreground: 0 0% 65%;              /* Light gray text */
     
     /* Accent colors - Same as secondary for consistency */
-    --accent: 220 13% 15%;                     /* Dark accent background */
-    --accent-foreground: 220 13% 80%;          /* Light accent text */
+    --accent: 0 0% 15%;                        /* Dark accent background */
+    --accent-foreground: 0 0% 80%;             /* Light accent text */
     
     /* Minimal semantic colors - Consistent grays */
-    --success: 220 13% 70%;                    /* Light gray for success states */
-    --success-foreground: 220 13% 9%;          /* Dark text on success */
-    --warning: 220 13% 70%;                    /* Same as success for consistency */
-    --warning-foreground: 220 13% 9%;          /* Dark text on warning */
-    --destructive: 220 13% 70%;                /* Same as success for consistency */
-    --destructive-foreground: 220 13% 9%;      /* Dark text on destructive */
-    --info: 220 13% 80%;                       /* Same as primary for consistency */
-    --info-foreground: 220 13% 9%;             /* Dark text on info */
+    --success: 0 0% 70%;                       /* Light gray for success states */
+    --success-foreground: 0 0% 9%;             /* Dark text on success */
+    --warning: 0 0% 70%;                       /* Same as success for consistency */
+    --warning-foreground: 0 0% 9%;             /* Dark text on warning */
+    --destructive: 0 0% 70%;                   /* Same as success for consistency */
+    --destructive-foreground: 0 0% 9%;         /* Dark text on destructive */
+    --info: 0 0% 80%;                          /* Same as primary for consistency */
+    --info-foreground: 0 0% 9%;                /* Dark text on info */
     
     /* UI elements */
-    --border: 220 13% 20%;                     /* Dark gray borders */
-    --input: 220 13% 20%;                      /* Dark gray inputs */
-    --ring: 220 13% 80%;                       /* Light gray focus rings */
+    --border: 0 0% 20%;                        /* Dark gray borders */
+    --input: 0 0% 20%;                         /* Dark gray inputs */
+    --ring: 0 0% 80%;                          /* Light gray focus rings */
   }
 }
 
