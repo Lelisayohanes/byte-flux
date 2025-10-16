@@ -1,0 +1,249 @@
+{
+  "id": "sample-category",
+  "title": "Sample Programming Course",
+  "description": "A comprehensive programming course covering multiple languages and concepts",
+  "icon": "💻",
+  "bannerImage": "/images/programming-banner.jpg",
+  "bannerVideo": {
+    "src": "/videos/programming-intro.mp4",
+    "thumbnail": "/images/programming-intro-thumb.jpg"
+  },
+  "difficulty": "Mixed",
+  "duration": "6 months",
+  "prerequisites": ["Basic computer literacy", "High school mathematics"],
+  "learningObjectives": [
+    "Master fundamental programming concepts",
+    "Learn multiple programming languages",
+    "Develop problem-solving skills",
+    "Build real-world projects"
+  ],
+  "tags": ["programming", "languages", "algorithms", "projects"],
+  "lastUpdated": "2024-01-15",
+  "author": "ByteFlux Team",
+  "version": "1.0.0",
+  "topics": [
+    {
+      "id": "python-basics",
+      "title": "Python Programming Basics",
+      "description": "Learn Python from scratch with hands-on examples",
+      "difficulty": "Beginner",
+      "duration": "4 weeks",
+      "icon": "🐍",
+      "image": "/images/python-basics.jpg",
+      "video": {
+        "src": "/videos/python-intro.mp4",
+        "thumbnail": "/images/python-intro-thumb.jpg",
+        "duration": "12:30"
+      },
+      "prerequisites": ["Basic computer skills"],
+      "learningObjectives": [
+        "Understand Python syntax",
+        "Write basic Python programs",
+        "Use Python data structures"
+      ],
+      "tags": ["python", "programming", "basics"],
+      "lastUpdated": "2024-01-10",
+      "author": "Dr. Sarah Johnson",
+      "version": "1.2.0",
+      "content": {
+        "id": "python-basics-content",
+        "title": "Python Programming Basics",
+        "description": "Complete introduction to Python programming",
+        "difficulty": "Beginner",
+        "duration": "4 weeks",
+        "prerequisites": ["Basic computer skills"],
+        "learningObjectives": [
+          "Understand Python syntax and structure",
+          "Write and run Python programs",
+          "Use variables, data types, and operators",
+          "Implement control flow with if/else and loops",
+          "Work with Python data structures"
+        ],
+        "content": [
+          {
+            "type": "video",
+            "src": "/videos/python-welcome.mp4",
+            "title": "Welcome to Python",
+            "description": "Introduction to Python programming language",
+            "duration": "8:45",
+            "thumbnail": "/images/python-welcome-thumb.jpg"
+          },
+          {
+            "type": "text",
+            "description": "Python is a high-level, interpreted programming language known for its simplicity and readability. It's widely used in web development, data science, artificial intelligence, and automation."
+          },
+          {
+            "type": "image",
+            "src": "/images/python-logo.png",
+            "alt": "Python programming language logo",
+            "caption": "Python - Simple, powerful, and versatile",
+            "width": 400,
+            "height": 400
+          },
+          {
+            "type": "code",
+            "code": "# Your first Python program\nprint(\"Hello, World!\")\n\n# Variables and data types\nname = \"Alice\"\nage = 25\nheight = 5.6\nis_student = True\n\nprint(f\"Name: {name}\")\nprint(f\"Age: {age}\")\nprint(f\"Height: {height}\")\nprint(f\"Is Student: {is_student}\")",
+            "language": "python",
+            "caption": "Basic Python syntax and variables"
+          },
+          {
+            "type": "link",
+            "src": "https://www.python.org/",
+            "title": "Official Python Website",
+            "description": "Download Python and access official documentation",
+            "external": true
+          },
+          {
+            "type": "quiz",
+            "description": "Test your understanding of Python basics",
+            "difficulty": "easy",
+            "points": 10
+          },
+          {
+            "type": "exercise",
+            "description": "Create a simple calculator program in Python",
+            "difficulty": "medium",
+            "points": 15
+          }
+        ],
+        "exercises": [
+          {
+            "id": "ex1",
+            "title": "Python Syntax Quiz",
+            "description": "Test your knowledge of Python syntax and basic concepts",
+            "type": "multiple-choice",
+            "difficulty": "easy",
+            "points": 10
+          },
+          {
+            "id": "ex2",
+            "title": "Variable Practice",
+            "description": "Create variables for different data types and print them",
+            "type": "coding",
+            "difficulty": "easy",
+            "points": 15
+          },
+          {
+            "id": "ex3",
+            "title": "Simple Calculator",
+            "description": "Build a basic calculator that can add, subtract, multiply, and divide",
+            "type": "project",
+            "difficulty": "medium",
+            "points": 25
+          }
+        ],
+        "resources": [
+          {
+            "title": "Python Official Tutorial",
+            "url": "https://docs.python.org/3/tutorial/",
+            "type": "documentation",
+            "description": "Official Python tutorial from python.org"
+          },
+          {
+            "title": "Python for Beginners",
+            "url": "https://www.youtube.com/watch?v=kqtD5dpn9C8",
+            "type": "video",
+            "description": "FreeCodeCamp's comprehensive Python course"
+          },
+          {
+            "title": "Automate the Boring Stuff",
+            "url": "https://automatetheboringstuff.com/",
+            "type": "book",
+            "description": "Practical Python programming book"
+          }
+        ],
+        "tags": ["python", "programming", "basics"],
+        "lastUpdated": "2024-01-10",
+        "author": "Dr. Sarah Johnson",
+        "version": "1.2.0"
+      },
+      "subtopics": [
+        {
+          "id": "python-variables",
+          "title": "Variables and Data Types",
+          "description": "Understanding Python variables and different data types",
+          "difficulty": "Beginner",
+          "duration": "3 days",
+          "icon": "📊",
+          "image": "/images/python-variables.jpg",
+          "tags": ["variables", "data-types", "python"],
+          "lastUpdated": "2024-01-08",
+          "author": "Dr. Sarah Johnson",
+          "version": "1.1.0"
+        },
+        {
+          "id": "python-control-flow",
+          "title": "Control Flow",
+          "description": "If/else statements and loops in Python",
+          "difficulty": "Beginner",
+          "duration": "1 week",
+          "icon": "🔄",
+          "image": "/images/python-control-flow.jpg",
+          "tags": ["control-flow", "loops", "conditionals"],
+          "lastUpdated": "2024-01-08",
+          "author": "Dr. Sarah Johnson",
+          "version": "1.1.0"
+        },
+        {
+          "id": "python-functions",
+          "title": "Functions",
+          "description": "Creating and using functions in Python",
+          "difficulty": "Beginner",
+          "duration": "1 week",
+          "icon": "⚙️",
+          "image": "/images/python-functions.jpg",
+          "tags": ["functions", "modularity", "reusability"],
+          "lastUpdated": "2024-01-08",
+          "author": "Dr. Sarah Johnson",
+          "version": "1.1.0"
+        }
+      ]
+    },
+    {
+      "id": "javascript-basics",
+      "title": "JavaScript Fundamentals",
+      "description": "Learn JavaScript for web development and beyond",
+      "difficulty": "Beginner",
+      "duration": "5 weeks",
+      "icon": "🟨",
+      "image": "/images/javascript-basics.jpg",
+      "video": {
+        "src": "/videos/javascript-intro.mp4",
+        "thumbnail": "/images/javascript-intro-thumb.jpg",
+        "duration": "15:20"
+      },
+      "tags": ["javascript", "web-development", "frontend"],
+      "lastUpdated": "2024-01-12",
+      "author": "Prof. Mike Chen",
+      "version": "1.1.0",
+      "subtopics": [
+        {
+          "id": "js-syntax",
+          "title": "JavaScript Syntax",
+          "description": "Basic JavaScript syntax and structure",
+          "difficulty": "Beginner",
+          "duration": "1 week",
+          "icon": "📝",
+          "image": "/images/js-syntax.jpg",
+          "tags": ["syntax", "javascript", "basics"],
+          "lastUpdated": "2024-01-10",
+          "author": "Prof. Mike Chen",
+          "version": "1.0.0"
+        },
+        {
+          "id": "js-dom",
+          "title": "DOM Manipulation",
+          "description": "Working with the Document Object Model",
+          "difficulty": "Intermediate",
+          "duration": "2 weeks",
+          "icon": "🌐",
+          "image": "/images/js-dom.jpg",
+          "tags": ["dom", "manipulation", "web"],
+          "lastUpdated": "2024-01-10",
+          "author": "Prof. Mike Chen",
+          "version": "1.0.0"
+        }
+      ]
+    }
+  ]
+}

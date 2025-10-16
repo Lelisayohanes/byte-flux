@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { 
   BookOpen, 
@@ -13,7 +14,11 @@ import {
   Wrench, 
   Users,
   X,
-  Menu
+  Menu,
+  ChevronDown,
+  ChevronRight,
+  Clock,
+  Star
 } from "lucide-react";
 import Link from "next/link";
 
@@ -33,6 +38,14 @@ const categories = [
     description: "Learn multiple programming languages and development practices",
     difficulty: "Beginner to Intermediate",
     duration: "8-12 months"
+  },
+  {
+    id: "programming-fundamentals",
+    title: "Programming Fundamentals",
+    icon: Brain,
+    description: "Master core programming concepts, algorithms, and problem-solving techniques",
+    difficulty: "Beginner",
+    duration: "4-6 months"
   },
   {
     id: "web-development",
@@ -110,9 +123,10 @@ interface SidebarProps {
   };
   showSubCategories?: boolean;
   onShowMainSidebar?: () => void;
+  categoryData?: any;
 }
 
-export default function Sidebar({ isOpen, onClose, currentCategory, showSubCategories = false, onShowMainSidebar }: SidebarProps) {
+export default function Sidebar({ isOpen, onClose, currentCategory, showSubCategories = false, onShowMainSidebar, categoryData }: SidebarProps) {
   console.log('Sidebar rendered with isOpen:', isOpen);
   
   return (
@@ -160,41 +174,36 @@ export default function Sidebar({ isOpen, onClose, currentCategory, showSubCateg
               </div>
               
               <div className="space-y-3">
-                {currentCategory.topics.map((topic, index) => {
-                  // Check if this is a programming language topic
-                  const isProgrammingLanguage = currentCategory.title === "Programming & Development" && 
-                    (topic.includes("Python") || topic.includes("Java") || topic.includes("C++") || topic.includes("JavaScript"));
-                  
-                  const topicPath = isProgrammingLanguage 
-                    ? `/categories/programming/${topic.toLowerCase().replace(/\s+/g, '').replace('c++', 'cpp')}`
-                    : null;
-
-                  if (topicPath) {
-                    return (
-                      <Link key={index} href={topicPath} className="block">
-                        <div className="flex items-start space-x-3 p-3 rounded-lg bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors cursor-pointer">
-                        <div className="w-6 h-6 bg-gray-600 dark:bg-gray-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <span className="text-white text-xs font-bold">{index + 1}</span>
-                          </div>
-                          <span className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                            {topic}
-                          </span>
-                        </div>
-                      </Link>
-                    );
-                  }
-
-                  return (
-                    <div key={index} className="flex items-start space-x-3 p-3 rounded-lg bg-gray-50 dark:bg-gray-700">
+                {categoryData?.subCategories?.map((subCategory: any, index: number) => (
+                  <Link 
+                    key={subCategory.id} 
+                    href={`/categories/foundations/${subCategory.id}`}
+                    className="block"
+                  >
+                    <div className="flex items-start space-x-3 p-3 rounded-lg bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors cursor-pointer">
                       <div className="w-6 h-6 bg-gray-600 dark:bg-gray-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                         <span className="text-white text-xs font-bold">{index + 1}</span>
                       </div>
-                      <span className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                        {topic}
-                      </span>
+                      <div className="flex-1">
+                        <span className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed font-medium">
+                          {subCategory.title}
+                        </span>
+                        <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 line-clamp-2">
+                          {subCategory.description}
+                        </p>
+                      </div>
                     </div>
-                  );
-                })}
+                  </Link>
+                )) || currentCategory.topics.map((topic, index) => (
+                  <div key={index} className="flex items-start space-x-3 p-3 rounded-lg bg-gray-50 dark:bg-gray-700">
+                    <div className="w-6 h-6 bg-gray-600 dark:bg-gray-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span className="text-white text-xs font-bold">{index + 1}</span>
+                    </div>
+                    <span className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                      {topic}
+                    </span>
+                  </div>
+                ))}
               </div>
               
               <div className="mt-8 pt-6 border-t dark:border-gray-700">

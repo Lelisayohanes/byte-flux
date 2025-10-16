@@ -6,6 +6,13 @@ import { Button } from "@/components/ui/button";
 import MainSidebar, { MainSidebarToggle } from "@/components/main-sidebar";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { ChevronRight } from "lucide-react";
+import Carousel, { CarouselSection } from "@/components/carousel";
+import { 
+  programmingCourses, 
+  webDevelopmentCourses, 
+  mobileDevelopmentCourses, 
+  systemDesignCourses 
+} from "@/lib/carousel-data";
 
 export default function Home() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -29,11 +36,11 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="h-screen w-full bg-white dark:bg-gray-900 overflow-hidden">
+    <div className="min-h-screen w-full bg-white dark:bg-gray-900">
       <MainSidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       
       {/* Top Header */}
-      <header className="w-full h-20 bg-gray-100 dark:bg-gray-800 backdrop-blur-sm border-b border-gray-300 dark:border-gray-700 flex items-center justify-between px-8">
+      <header className="w-full h-20 bg-gray-100 dark:bg-gray-800 backdrop-blur-sm border-b border-gray-300 dark:border-gray-700 flex items-center justify-between px-8 sticky top-0 z-30">
         {/* Logo */}
         <div className="flex items-center space-x-4">
           <div className="w-10 h-10 flex items-center justify-center">
@@ -52,8 +59,8 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Main Content Area - Hero Section */}
-      <main className="h-[calc(100vh-5rem)] relative overflow-hidden">
+      {/* Hero Section */}
+      <section className="h-screen relative overflow-hidden">
         {/* Background Video */}
         <video
           ref={videoRef}
@@ -103,7 +110,63 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </main>
+      </section>
+
+      {/* Programming Courses Carousel */}
+      <CarouselSection 
+        title="Programming Fundamentals" 
+        description="Master core programming concepts and languages with our comprehensive course collection"
+      >
+        <Carousel 
+          title="Featured Programming Courses"
+          items={programmingCourses}
+          itemsPerView={3}
+          autoScroll={true}
+          scrollSpeed={4000}
+        />
+      </CarouselSection>
+
+      {/* Web Development Carousel */}
+      <CarouselSection 
+        title="Web Development" 
+        description="Build modern, responsive web applications from frontend to backend"
+      >
+        <Carousel 
+          title="Web Development Courses"
+          items={webDevelopmentCourses}
+          itemsPerView={3}
+          autoScroll={true}
+          scrollSpeed={3500}
+        />
+      </CarouselSection>
+
+      {/* Mobile Development Carousel */}
+      <CarouselSection 
+        title="Mobile Development" 
+        description="Create cross-platform mobile applications for iOS and Android"
+      >
+        <Carousel 
+          title="Mobile Development Courses"
+          items={mobileDevelopmentCourses}
+          itemsPerView={3}
+          autoScroll={true}
+          scrollSpeed={4500}
+        />
+      </CarouselSection>
+
+      {/* System Design Carousel */}
+      <CarouselSection 
+        title="System Design & Architecture" 
+        description="Design scalable systems and understand architectural patterns"
+      >
+        <Carousel 
+          title="Advanced System Design Courses"
+          items={systemDesignCourses}
+          itemsPerView={3}
+          autoScroll={true}
+          scrollSpeed={5000}
+        />
+      </CarouselSection>
     </div>
   );
 }
